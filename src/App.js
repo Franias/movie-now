@@ -1,13 +1,9 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import React from 'react';
-
+import Main from './pages/Main';
 function App() {
-  return (
-    <h1>
-      Movie Now
-    </h1>
-  );
+  return < Main />;
 }
 
 export default App;
