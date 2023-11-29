@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../components/Header/index';
-import firebase from 'firebase';
+// import firebase from 'firebase';
+import db from '../../services/firebase';
+
 import {
     StyledCardBody,
     StyledCardImg,
@@ -13,22 +15,26 @@ import {
 function Main() {
 
     const  [movies, setMovies] = useState([]);
+ 
     useEffect(() => {
         async function loadMovies(){
-            const db = firebase.firestore();
+            const data = db;
 
-            db.collection('movie')
-              .get()
-              .then((querySnapshot) =>{
-                querySnapshot.forEach((doc) =>{
-                    console.log(doc.data)
-                });
-
-              });
+        data.collection("movie")
+        .get()
+        .then((querySnapshot) => {
+            const movies = [];
+            querySnapshot.forEach((doc) => {
+                console.log(doc.data())
+                movies.push(doc.data())
+            })
+            setMovies(movies);
+        })
         }
         loadMovies();
     }, [])
-    return <>
+    return (
+    <>
     <Header />
     
 
@@ -38,7 +44,7 @@ function Main() {
             <StyledCard style={{ width: 250, margin : 10 }}>
                 <StyledCardImg  variant="top" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JzDt_DAFQRA_uXMzSAkM7g.jpeg" />
                 <StyledCardBody>
-                    <StyledCard.Title>Insecure </StyledCard.Title>
+                    <StyledCard.Title>Insecure</StyledCard.Title>
                     <StyledCardText >
                     Some quick example text to build on the StyledCard title and make up the
                     bulk of the StyledCard's content.
@@ -48,7 +54,7 @@ function Main() {
                 </StyledCard>
             </StyledRow>
         </StyledContainer>
-    </>
+    </>);
 }
 
 export default Main;
