@@ -1,5 +1,6 @@
-import React from 'react';
-import Header from '../../components/Header';
+import React, {useState, useEffect} from 'react';
+import Header from '../../components/Header/index';
+import firebase from 'firebase';
 import {
     StyledCardBody,
     StyledCardImg,
@@ -10,6 +11,23 @@ import {
     StyledCardText,
     Title} from './styles'
 function Main() {
+
+    const  [movies, setMovies] = useState([]);
+    useEffect(() => {
+        async function loadMovies(){
+            const db = firebase.firestore();
+
+            db.collection('movie')
+              .get()
+              .then((querySnapshot) =>{
+                querySnapshot.forEach((doc) =>{
+                    console.log(doc.data)
+                });
+
+              });
+        }
+        loadMovies();
+    }, [])
     return <>
     <Header />
     
