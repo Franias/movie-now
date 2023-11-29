@@ -41,11 +41,11 @@ function Main() {
             <Title>Movie Now</Title>
             <StyledRow>
 
-                
-            <StyledCard>
-                <StyledCardImg  variant="top" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JzDt_DAFQRA_uXMzSAkM7g.jpeg" />
+            {movies.map((movie) =>    (
+            <StyledCard key={movie.id}>
+                <StyledCardImg  variant="top" src={movie.url_picture} />
                 <StyledCardBody>
-                    <StyledCard.Title>Insecure</StyledCard.Title>
+                    <StyledCard.Title>{movie.name}</StyledCard.Title>
                     <StyledCardText >
                     Some quick example text to build on the StyledCard title and make up the
                     bulk of the StyledCard's content.
@@ -53,6 +53,7 @@ function Main() {
                     <StyledButton variant="outline-dark">Assista agora</StyledButton>
                 </StyledCardBody>
                 </StyledCard>
+                ))}
             </StyledRow>
         </StyledContainer>
     </>);
