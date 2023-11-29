@@ -9,6 +9,11 @@ align-itens: center;
 min-width: 300;
 `;
 
+export const Title = styled.h1`
+color: #fff;
+font-family= ubuntu;
+font-size = 20;
+`
 export const StyledRow = styled(Row)`
 display: flex;
 justify-content: center`;
@@ -20,9 +25,18 @@ width: 250px;
 margin: 10px;
 `
 
-export const StyledCardImg = styled(Card.img)`
+export const StyledCardImg = styled(Card.Img)`
 width: 220px;
 heigh: 320px;
 align-self: center;
 padding-top: 20 px;
 cursor: pointer;`
+
+export const StyledCardBody = styled(Card.Body)`
+    display: fle;
+    flex-direction: column;
+    justify-content: space-between;
+`
+
+export const StyledCardText = styled(Card.Text)`
+    fontSize: 20`
