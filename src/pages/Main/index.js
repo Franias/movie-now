@@ -21,18 +21,29 @@ import { doc, onSnapshot, collection, query, where, QuerySnapshot } from "fireba
 function Main() {
 
     const  [movies, setMovies] = useState([]);
+
+useEffect(()=> {
+    async function loadMovies(){
+
+        
     const db = firebase.firestore();
     db.collection("movie")
         .get()
         .then((querySnapshot) => {
+            const arrmovies= [];
             querySnapshot.forEach((doc) => {
                 // doc.data() is never undefined for query doc snapshots
+                arrmovies.push(doc.data())
                 console.log(doc.id, " => ", doc.data());
             });
+            setMovies(arrmovies)
         })
         .catch((error) => {
             console.log("Error getting documents: ", error);
         });
+    }
+    loadMovies();
+}, [])
     return (
     <>
     <Header />
@@ -48,8 +59,7 @@ function Main() {
                 <StyledCardBody>
                     <StyledCard.Title>{movie.name}</StyledCard.Title>
                     <StyledCardText >
-                    Some quick example text to build on the StyledCard title and make up the
-                    bulk of the StyledCard's content.
+                    {movie.description}
                     </StyledCardText>
                     <StyledButton variant="outline-dark">Assista agora</StyledButton>
                 </StyledCardBody>
