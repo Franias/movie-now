@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header';
-import {StyledContainer, StyledButton, StyledRow, StyledCard} from './styles'
+import {StyledCardImg,StyledContainer, StyledButton, StyledRow, StyledCard} from './styles'
 function Main() {
     return <>
     <Header />
@@ -12,13 +12,7 @@ function Main() {
                 display: 'flex', justifyContent: 'center'
             }}>
             <StyledCard style={{ width: 250, margin : 10 }}>
-                <StyledCard.Img style={{
-                    width: 180,
-                    height: 180,
-                    alignSelf: 'center',
-                    paddingTop:20,
-                    cursor: 'pointer',
-                }} variant="top" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JzDt_DAFQRA_uXMzSAkM7g.jpeg" />
+                <StyledCardImg  variant="top" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JzDt_DAFQRA_uXMzSAkM7g.jpeg" />
                 <StyledCard.Body style={{
                     display: 'flex',
                     flexDirection: 'column',
