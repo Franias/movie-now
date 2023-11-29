@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Row, Col, Button,Container, Card, } from 'react-bootstrap';
-class index extends Component {
+class Main extends Component {
     state = {};
     render() {
         return(
@@ -16,18 +16,37 @@ class index extends Component {
             >
             <h1 style={{
                 color: '#aaaa',
-                marginTop: 20
-            }}>Main</h1>
-            <Row>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
+                marginTop: 20,
+                fontFamily: "ubuntu",
+                alignItens: 'center',
+                alignSelf: 'center',
+            }}>Movie Now</h1>
+            <Row style={{
+                display: 'flex', justifyContent: 'center'
+            }}>
+            <Card style={{ width: 250, margin : 10 }}>
+                <Card.Img style={{
+                    width: 180,
+                    height: 180,
+                    alignSelf: 'center',
+                    paddingTop:20,
+                    cursor: 'pointer',
+                }} variant="top" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JzDt_DAFQRA_uXMzSAkM7g.jpeg" />
+                <Card.Body style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                }}>
+                    <Card.Title>Insecure </Card.Title>
+                    <Card.Text style={{
+                        fontSize: 20
+                    }}>
                     Some quick example text to build on the card title and make up the
                     bulk of the card's content.
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Button style={{
+                        width:200
+                    }} variant="outline-dark">Go somewhere</Button>
                 </Card.Body>
                 </Card>
             </Row>
@@ -38,4 +57,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default Main;
