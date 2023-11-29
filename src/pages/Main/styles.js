@@ -13,7 +13,11 @@ export const Title = styled.h1`
 color: #fff;
 font-family= ubuntu;
 font-size = 20;
+justify-content: center;
+align-items: center;
 `
+
+
 export const StyledRow = styled(Row)`
 display: flex;
 justify-content: center`;

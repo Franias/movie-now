@@ -61,7 +61,9 @@ useEffect(()=> {
                     <StyledCardText >
                     {movie.description}
                     </StyledCardText>
+                    <Link to="/list-episodes">
                     <StyledButton variant="outline-dark">Assista agora</StyledButton>
+                </Link>
                 </StyledCardBody>
                 </StyledCard>
                 ))}

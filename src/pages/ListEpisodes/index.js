@@ -1,6 +1,12 @@
 import React from 'react';
-import {StyledContainer} from './styles';
+import {Title,StyledContainer, List, StyledButton} from './styles';
 function ListMovies(){
-    return <StyledContainer><h1>List Movies</h1></StyledContainer>
+    return <StyledContainer>
+        <Title>Name</Title>
+        <List>
+            <li>Primeiro Episodeo <StyledButton>Watch now</StyledButton></li>
+        </List>
+        
+    </StyledContainer>
 }
 export default ListMovies;
