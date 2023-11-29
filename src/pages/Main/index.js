@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../components/Header/index';
 // import firebase from 'firebase';
-import db from '../../services/firebase';
-
+import {database, fbDatabase } from '../../services/firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore'
 import {
     StyledCardBody,
     StyledCardImg,
@@ -12,27 +13,25 @@ import {
     StyledCard,
     StyledCardText,
     Title} from './styles'
+
+import { doc, onSnapshot, collection, query, where, QuerySnapshot } from "firebase/firestore";
+
+
 function Main() {
 
     const  [movies, setMovies] = useState([]);
- 
-    useEffect(() => {
-        async function loadMovies(){
-            const data = db;
-
-        data.collection("movie")
+    const db = firebase.firestore();
+    db.collection("movie")
         .get()
         .then((querySnapshot) => {
-            const movies = [];
             querySnapshot.forEach((doc) => {
-                console.log(doc.data())
-                movies.push(doc.data())
-            })
-            setMovies(movies);
+                // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+            });
         })
-        }
-        loadMovies();
-    }, [])
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
     return (
     <>
     <Header />
@@ -41,7 +40,9 @@ function Main() {
     <StyledContainer>
             <Title>Movie Now</Title>
             <StyledRow>
-            <StyledCard style={{ width: 250, margin : 10 }}>
+
+                
+            <StyledCard>
                 <StyledCardImg  variant="top" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*JzDt_DAFQRA_uXMzSAkM7g.jpeg" />
                 <StyledCardBody>
                     <StyledCard.Title>Insecure</StyledCard.Title>
@@ -49,7 +50,7 @@ function Main() {
                     Some quick example text to build on the StyledCard title and make up the
                     bulk of the StyledCard's content.
                     </StyledCardText>
-                    <StyledButton variant="outline-dark">Go somewhere</StyledButton>
+                    <StyledButton variant="outline-dark">Assista agora</StyledButton>
                 </StyledCardBody>
                 </StyledCard>
             </StyledRow>
