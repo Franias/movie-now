@@ -17,7 +17,6 @@ justify-content: center;
 align-items: center;
 `
 
-
 export const StyledRow = styled(Row)`
 display: flex;
 justify-content: center`;
